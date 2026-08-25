@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>
+  window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asistente Virtual | Centro de Informática</title>
+<meta name="description" content="Asistente virtual del Centro de Informática">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="page">
+<section class="chat">
+<header class="header">
+<div class="profile">
+<div class="avatar">CI</div>
+<div><h1>Centro de Informática</h1><div class="online"><span></span> Asistente virtual</div></div>
+</div>
+</header>
+<div id="chat" class="messages"></div>
+<div id="actions" class="actions"></div>
+<form id="form" class="composer">
+<input id="input" type="text" placeholder="Escribe tu respuesta..." autocomplete="off" aria-label="Mensaje">
+<button type="submit" aria-label="Enviar">➤</button>
+</form>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
