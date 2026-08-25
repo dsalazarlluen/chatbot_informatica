@@ -1,6 +1,16 @@
 const chat=document.getElementById("chat"),actions=document.getElementById("actions"),form=document.getElementById("form"),input=document.getElementById("input");
 let state="name",studentName="",sede="";
-
+function registrarEvento(menu){
+  if(typeof window.va==="function"){
+    window.va("event",{
+      name:"menu_consulta",
+      data:{
+        menu:menu,
+        sede:sede
+      }
+    });
+  }
+}
 function message(text,type="bot",scrollMode="bottom"){
  const el=document.createElement("div");el.className=`msg ${type}`;el.innerHTML=text;chat.appendChild(el);
  if(scrollMode==="top") requestAnimationFrame(()=>el.scrollIntoView({block:"start",behavior:"smooth"}));
@@ -8,8 +18,16 @@ function message(text,type="bot",scrollMode="bottom"){
 }
 function buttons(items){
  actions.innerHTML="";
- items.forEach(item=>{const b=document.createElement("button");b.type="button";b.textContent=item.label;b.onclick=()=>{message(escapeHtml(item.label),"user");item.action()};actions.appendChild(b)})
-}
+items.forEach(item=>{
+  const b=document.createElement("button");
+  b.type="button";
+  b.textContent=item.label;
+  b.onclick=()=>{
+    registrarEvento(item.label);
+    message(escapeHtml(item.label),"user");
+    item.action();
+  }
+})}
 function askName(){
  state="name";message("👋 <strong>¡Hola!</strong><br>Bienvenido(a) al <strong>Centro de Informática</strong>.");
  message("Para brindarte una mejor atención, por favor escribe tus <strong>APELLIDOS Y NOMBRES</strong>.");
