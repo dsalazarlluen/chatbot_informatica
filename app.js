@@ -16,17 +16,30 @@ function message(text,type="bot",scrollMode="bottom"){
  if(scrollMode==="top") requestAnimationFrame(()=>el.scrollIntoView({block:"start",behavior:"smooth"}));
 else requestAnimationFrame(()=>chat.scrollTop=chat.scrollHeight);}
 function buttons(items){
- actions.innerHTML="";
-items.forEach(item=>{
-  const b=document.createElement("button");
-  b.type="button";
-  b.textContent=item.label;
-  b.onclick=()=>{
-    registrarEvento(item.label);
-    message(escapeHtml(item.label),"user");
-    item.action();
-  }
-})}
+  actions.innerHTML="";
+  actions.style.display="grid";
+
+  items.forEach(item=>{
+    const b=document.createElement("button");
+    b.type="button";
+    b.textContent=item.label;
+
+    b.onclick=()=>{
+      registrarEvento(item.label);
+      message(escapeHtml(item.label),"user");
+      item.action();
+    };
+
+    actions.appendChild(b);
+  });
+
+  requestAnimationFrame(()=>{
+    actions.scrollIntoView({
+      behavior:"smooth",
+      block:"nearest"
+    });
+  });
+}
 function askName(){
  state="name";message("👋 <strong>¡Hola!</strong><br>Bienvenido(a) al <strong>Centro de Informática</strong>.");
  message("Para brindarte una mejor atención, por favor escribe tus <strong>APELLIDOS Y NOMBRES</strong>.");
