@@ -14,8 +14,7 @@ function registrarEvento(menu){
 function message(text,type="bot",scrollMode="bottom"){
  const el=document.createElement("div");el.className=`msg ${type}`;el.innerHTML=text;chat.appendChild(el);
  if(scrollMode==="top") requestAnimationFrame(()=>el.scrollIntoView({block:"start",behavior:"smooth"}));
- else chat.scrollTop=chat.scrollHeight;
-}
+else requestAnimationFrame(()=>chat.scrollTop=chat.scrollHeight);}
 function buttons(items){
  actions.innerHTML="";
 items.forEach(item=>{
